@@ -1,5 +1,6 @@
 ![persian-faker](https://socialify.git.ci/sepisoltani/persian-faker/image?description=1&font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Light)
 # Persian Faker
+[![codecov](https://codecov.io/gh/sepisoltani/persian-faker/graph/badge.svg?token=H0C0NFE9PM)](https://codecov.io/gh/sepisoltani/persian-faker)
 
 The `persian-faker` is a specialized Go package designed to generate realistic Persian fake data, ideal for populating test data or simulating user data in applications that require Persian locale-specific data.
 
