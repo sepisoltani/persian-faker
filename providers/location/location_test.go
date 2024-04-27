@@ -33,3 +33,18 @@ func TestRandomCity(t *testing.T) {
 		t.Errorf("RandomCity returned a value not in the cities list: %s", randomCity)
 	}
 }
+
+// TestRandomCountry checks if the randomly selected city is from the list.
+func TestRandomCountry(t *testing.T) {
+	randomCountry := RandomCountry()
+	found := false
+	for _, country := range countries {
+		if country == randomCountry {
+			found = true
+			break
+		}
+	}
+	if !found {
+		t.Errorf("RandomCountry returned a value not in the cities list: %s", randomCountry)
+	}
+}
