@@ -1,4 +1,4 @@
-name: Go Tests
+name: Go CI
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Run Tests
+    name: Test and Lint
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +22,12 @@ jobs:
 
       - name: Install dependencies
         run: go mod download
+
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: latest
+          args: --config=.golangci.yml
 
       - name: Run tests
         run: go test -v ./...
