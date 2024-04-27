@@ -39,3 +39,41 @@ func RandomBankCardNumber() string {
 
 	return cardNumber
 }
+
+// RandomPersianBankName returns a random Persian bank name from a predefined list.
+func RandomPersianBankName() string {
+	bankNames := []string{
+		"بانک ملی ایران",
+		"بانک سپه",
+		"بانک تجارت",
+		"بانک ملت",
+		"بانک صادرات ایران",
+		"بانک کشاورزی",
+		"بانک مسکن",
+		"بانک صنعت و معدن",
+		"بانک توسعه صادرات",
+		"بانک توسعه تعاون",
+		"پست بانک ایران",
+		"بانک اقتصاد نوین",
+		"بانک پارسیان",
+		"بانک پاسارگاد",
+		"بانک کارآفرین",
+		"بانک سامان",
+		"بانک سینا",
+		"بانک خاورمیانه",
+		"بانک شهر",
+		"بانک دی",
+		"بانک صنعت و معدن",
+		"بانک آینده",
+		"بانک گردشگری",
+		"بانک ایران زمین",
+		"بانک قرض الحسنه مهر ایران",
+	}
+
+	// Create a new random source and a random generator for better concurrency support
+	src := rand.NewSource(time.Now().UnixNano())
+	rng := rand.New(src)
+
+	// Select a random bank name
+	return bankNames[rng.Intn(len(bankNames))]
+}
