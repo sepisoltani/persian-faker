@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// RandomBankShebaNumber generates a random Persian Bank Sheba number.
+// RandomBankShebaNumber generates a random Persian Bank Sheba phonenumber.
 func RandomBankShebaNumber() string {
 
 	src := rand.NewSource(time.Now().UnixNano())
@@ -22,7 +22,7 @@ func RandomBankShebaNumber() string {
 	return sheba
 }
 
-// RandomBankCardNumber generates a bank card number starting with "6037" followed by 12 random digits.
+// RandomBankCardNumber generates a bank card phonenumber starting with "6037" followed by 12 random digits.
 func RandomBankCardNumber() string {
 	// Create a new random source and a random generator for better concurrency support
 	src := rand.NewSource(time.Now().UnixNano())
@@ -31,7 +31,7 @@ func RandomBankCardNumber() string {
 	// Start with the prefix "6037"
 	cardNumber := "6037"
 
-	// Append 12 random digits to the card number
+	// Append 12 random digits to the card phonenumber
 	for i := 0; i < 12; i++ {
 		digit := rng.Intn(10) // Generate a single digit (0-9)
 		cardNumber += fmt.Sprintf("%d", digit)

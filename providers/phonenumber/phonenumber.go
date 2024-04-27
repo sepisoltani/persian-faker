@@ -1,4 +1,4 @@
-package number
+package phonenumber
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// RandomPersianMobileNumber generates a Persian mobile number.
+// RandomPersianMobileNumber generates a Persian mobile phonenumber.
 func RandomPersianMobileNumber() string {
 	prefixes := []string{"0912", "0913", "0914", "0915", "0916"}
 
