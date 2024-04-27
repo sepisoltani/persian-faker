@@ -22,6 +22,7 @@ issues:
   exclude-rules:
     - linters:
         - gosec
-      text: "G101: Potential hardcoded credentials"
+      text: "G404:" # Ignore weak random number generator lint. We do not need strong randomness here.
+
   exclude:
     - "should have comment or be unexported"
