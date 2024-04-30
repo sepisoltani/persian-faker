@@ -4,9 +4,10 @@ import (
 	"testing"
 )
 
-// TestPersianDigit checks if the digit returned by PersianDigit is one of the valid Persian digits.
-func TestPersianDigit(t *testing.T) {
-	digit := PersianDigit()
+// TestGeneratePersianDigit checks if the digit returned by GeneratePersianDigit is one of the valid Persian digits.
+func TestGeneratePersianDigit(t *testing.T) {
+	d := &Digit{}
+	digit := d.GeneratePersianDigit()
 	found := false
 	for _, d := range faNums {
 		if d == digit {
@@ -15,6 +16,6 @@ func TestPersianDigit(t *testing.T) {
 		}
 	}
 	if !found {
-		t.Errorf("PersianDigit returned an invalid digit: %s", digit)
+		t.Errorf("GeneratePersianDigit returned an invalid digit: %s", digit)
 	}
 }

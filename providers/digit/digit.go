@@ -5,13 +5,15 @@ import (
 	"time"
 )
 
+var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
+
 // faNums contains Persian digits.
 var faNums = []string{"۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"}
 
-// PersianDigit returns a random Persian digit.
-func PersianDigit() string {
-	src := rand.NewSource(time.Now().UnixNano())
-	rng := rand.New(src)
+type Digit struct {
+}
 
+// GeneratePersianDigit returns a random Persian digit.
+func (Digit) GeneratePersianDigit() string {
 	return faNums[rng.Intn(len(faNums))]
 }
