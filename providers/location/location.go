@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
+
 var provinces = []string{
 	"آذربایجان شرقی", "آذربایجان غربی", "اردبیل", "اصفهان", "البرز",
 	"ایلام", "بوشهر", "تهران", "چهارمحال و بختیاری", "خراسان جنوبی",
@@ -223,23 +225,20 @@ var countries = []string{
 	"یونان",
 }
 
-// RandomProvince returns a random province.
-func RandomProvince() string {
-	src := rand.NewSource(time.Now().UnixNano())
-	rng := rand.New(src)
+type Location struct {
+}
+
+// GenerateProvince returns a random province.
+func (Location) GenerateProvince() string {
 	return provinces[rng.Intn(len(provinces))]
 }
 
-// RandomCity returns a random city.
-func RandomCity() string {
-	src := rand.NewSource(time.Now().UnixNano())
-	rng := rand.New(src)
+// GenerateCity returns a random city.
+func (Location) GenerateCity() string {
 	return cities[rng.Intn(len(cities))]
 }
 
-// RandomCountry returns a random country.
-func RandomCountry() string {
-	src := rand.NewSource(time.Now().UnixNano())
-	rng := rand.New(src)
+// GenerateCountry returns a random country.
+func (Location) GenerateCountry() string {
 	return countries[rng.Intn(len(cities))]
 }
