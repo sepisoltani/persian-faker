@@ -4,9 +4,10 @@ import (
 	"testing"
 )
 
-// TestRandomBillType checks if the returned bill type is in the billTypes map.
-func TestRandomBillType(t *testing.T) {
-	result := RandomBillType()
+// TestGenerateBillType checks if the returned bill type is in the billTypes map.
+func TestGenerateBillType(t *testing.T) {
+	bill := &Bill{}
+	result := bill.GenerateBillType()
 	found := false
 
 	for _, v := range billTypes {
@@ -16,6 +17,6 @@ func TestRandomBillType(t *testing.T) {
 		}
 	}
 	if !found {
-		t.Errorf("RandomBillType returned an invalid bill type: %s", result)
+		t.Errorf("GenerateBillType returned an invalid bill type: %s", result)
 	}
 }

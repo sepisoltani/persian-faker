@@ -5,6 +5,10 @@ import (
 	"time"
 )
 
+var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
+
+type Bill struct{}
+
 // billTypes contains various types of Persian bills.
 var billTypes = map[int]string{
 	1:  "آب",
@@ -20,14 +24,12 @@ var billTypes = map[int]string{
 	11: "تلویزیون",
 }
 
-// RandomBillType returns a random bill type from the map.
-func RandomBillType() string {
+// GenerateBillType returns a random bill type from the map.
+func (Bill) GenerateBillType() string {
 
 	keys := make([]int, 0, len(billTypes))
 	for k := range billTypes {
 		keys = append(keys, k)
 	}
-	src := rand.NewSource(time.Now().UnixNano())
-	rng := rand.New(src)
 	return billTypes[keys[rng.Intn(len(keys))]]
 }
