@@ -5,39 +5,42 @@ import (
 	"testing"
 )
 
-// TestRandomBankShebaNumber ensures that the Sheba phonenumber generated is in the correct format.
-func TestRandomBankShebaNumber(t *testing.T) {
-	sheba := RandomBankShebaNumber()
+// TestGenerateBankIBAN ensures that the IBAN generated is in the correct format.
+func TestGenerateBankIBAN(t *testing.T) {
+	bank := &Bank{}
+	sheba := bank.GenerateBankIBAN()
 	expectedPattern := `^IR[0-9]{24}$`
 
 	re := regexp.MustCompile(expectedPattern)
 	if !re.MatchString(sheba) {
-		t.Errorf("Generated Sheba phonenumber is invalid. Got: %s, Expected pattern: %s", sheba, expectedPattern)
+		t.Errorf("Generated IBAN is invalid. Got: %s, Expected pattern: %s", sheba, expectedPattern)
 	}
 
 	if len(sheba) != 26 {
-		t.Errorf("Generated Sheba phonenumber length is incorrect. Expected 26, got: %d", len(sheba))
+		t.Errorf("Generated IBAN length is incorrect. Expected 26, got: %d", len(sheba))
 	}
 }
 
-// TestRandomBankShebaNumber ensures that the bank card phonenumber generated is in the correct format.
-func TestRandomBankCardNumber(t *testing.T) {
-	cardNumber := RandomBankCardNumber()
+// TestGenerateBankCardNumber ensures that the bank card number generated is in the correct format.
+func TestGenerateBankCardNumber(t *testing.T) {
+	bank := &Bank{}
+	cardNumber := bank.GenerateBankCardNumber()
 	expectedPattern := `^6037[0-9]{12}$`
 
 	re := regexp.MustCompile(expectedPattern)
 	if !re.MatchString(cardNumber) {
-		t.Errorf("Generated bank card phonenumber is invalid. Got: %s, Expected pattern: %s", cardNumber, expectedPattern)
+		t.Errorf("Generated bank card number is invalid. Got: %s, Expected pattern: %s", cardNumber, expectedPattern)
 	}
 
 	if len(cardNumber) != 16 {
-		t.Errorf("Generated bank card phonenumber length is incorrect. Expected 16, got: %d", len(cardNumber))
+		t.Errorf("Generated bank card number length is incorrect. Expected 16, got: %d", len(cardNumber))
 	}
 }
 
-// TestRandomPersianBankName checks if the returned bank name is from the list of defined bank names.
-func TestRandomPersianBankName(t *testing.T) {
-	bankName := RandomPersianBankName()
+// TestGenerateBankName checks if the returned bank name is from the list of defined bank names.
+func TestGenerateBankName(t *testing.T) {
+	bank := &Bank{}
+	bankName := bank.GenerateBankName() // Use the GenerateBankName method
 	validBankNames := map[string]bool{
 		"بانک ملی ایران":            true,
 		"بانک سپه":                  true,

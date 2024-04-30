@@ -1,79 +1,44 @@
 package bank
 
 import (
-	"fmt"
 	"math/rand"
+	"strconv"
 	"time"
 )
 
-// RandomBankShebaNumber generates a random Persian Bank Sheba phonenumber.
-func RandomBankShebaNumber() string {
+var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
 
-	src := rand.NewSource(time.Now().UnixNano())
-	rng := rand.New(src)
+type Bank struct{}
 
+// GenerateBankIBAN generates a random Persian bank IBAN number.
+func (Bank) GenerateBankIBAN() string {
 	sheba := "IR"
-
 	for i := 0; i < 24; i++ {
-		digit := rng.Intn(10) // Generate a single digit (0-9)
-		sheba += fmt.Sprintf("%d", digit)
+		digit := rng.Intn(10)
+		sheba += strconv.Itoa(digit)
 	}
-
 	return sheba
 }
 
-// RandomBankCardNumber generates a bank card phonenumber starting with "6037" followed by 12 random digits.
-func RandomBankCardNumber() string {
-	// Create a new random source and a random generator for better concurrency support
-	src := rand.NewSource(time.Now().UnixNano())
-	rng := rand.New(src)
-
-	// Start with the prefix "6037"
+// GenerateBankCardNumber generates a bank card number.
+func (Bank) GenerateBankCardNumber() string {
 	cardNumber := "6037"
-
-	// Append 12 random digits to the card phonenumber
 	for i := 0; i < 12; i++ {
-		digit := rng.Intn(10) // Generate a single digit (0-9)
-		cardNumber += fmt.Sprintf("%d", digit)
+		digit := rng.Intn(10)
+		cardNumber += strconv.Itoa(digit)
 	}
-
 	return cardNumber
 }
 
-// RandomPersianBankName returns a random Persian bank name from a predefined list.
-func RandomPersianBankName() string {
+// GenerateBankName returns a random Persian bank name from a predefined list.
+func (Bank) GenerateBankName() string {
 	bankNames := []string{
-		"بانک ملی ایران",
-		"بانک سپه",
-		"بانک تجارت",
-		"بانک ملت",
-		"بانک صادرات ایران",
-		"بانک کشاورزی",
-		"بانک مسکن",
-		"بانک صنعت و معدن",
-		"بانک توسعه صادرات",
-		"بانک توسعه تعاون",
-		"پست بانک ایران",
-		"بانک اقتصاد نوین",
-		"بانک پارسیان",
-		"بانک پاسارگاد",
-		"بانک کارآفرین",
-		"بانک سامان",
-		"بانک سینا",
-		"بانک خاورمیانه",
-		"بانک شهر",
-		"بانک دی",
-		"بانک صنعت و معدن",
-		"بانک آینده",
-		"بانک گردشگری",
-		"بانک ایران زمین",
-		"بانک قرض الحسنه مهر ایران",
+		"بانک ملی ایران", "بانک سپه", "بانک تجارت", "بانک ملت",
+		"بانک صادرات ایران", "بانک کشاورزی", "بانک مسکن", "بانک صنعت و معدن",
+		"بانک توسعه صادرات", "بانک توسعه تعاون", "پست بانک ایران", "بانک اقتصاد نوین",
+		"بانک پارسیان", "بانک پاسارگاد", "بانک کارآفرین", "بانک سامان",
+		"بانک سینا", "بانک خاورمیانه", "بانک شهر", "بانک دی", "بانک صنعت و معدن",
+		"بانک آینده", "بانک گردشگری", "بانک ایران زمین", "بانک قرض الحسنه مهر ایران",
 	}
-
-	// Create a new random source and a random generator for better concurrency support
-	src := rand.NewSource(time.Now().UnixNano())
-	rng := rand.New(src)
-
-	// Select a random bank name
 	return bankNames[rng.Intn(len(bankNames))]
 }
