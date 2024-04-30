@@ -1,40 +1,64 @@
-package names
+package name
 
 import (
+	"strings"
 	"testing"
 )
 
-// MockDataLoader is a mock implementation of DataLoader for testing.
-type MockDataLoader struct{}
-
-func (mdl MockDataLoader) LoadData(path string) (NameData, error) {
-	return NameData{
-		FirstNames: []string{"Ali", "Reza"},
-		LastNames:  []string{"Kazemi", "Mousavi"},
-	}, nil
+func TestGenerateFirstName(t *testing.T) {
+	seen := make(map[string]bool)
+	for i := 0; i < 100; i++ {
+		n := &Name{}
+		name := n.GenerateFirstName()
+		if seen[name] {
+			continue
+		}
+		seen[name] = true
+		if !contains(firstNames, name) {
+			t.Errorf("GenerateFirstName returned an unexpected name: %s", name)
+		}
+	}
+	if len(seen) < 10 { // Check for some variability
+		t.Errorf("GenerateFirstName returned too few unique names, got: %d", len(seen))
+	}
 }
 
-// TestNameGenerator tests the functionality of NameGenerator.
-func TestNameGenerator(t *testing.T) {
-	loader := MockDataLoader{}
-	seed := int64(1) // Fixed seed for reproducibility
-	ng, err := NewNameGenerator(loader, seed)
-	if err != nil {
-		t.Fatalf("Failed to create NameGenerator: %v", err)
+// contains checks if a string is in a slice of strings
+func contains(slice []string, item string) bool {
+	for _, a := range slice {
+		if a == item {
+			return true
+		}
 	}
+	return false
+}
 
-	firstName := ng.RandomFirstName()
-	if firstName != "Reza" {
-		t.Errorf("Expected 'Reza', got '%s'", firstName)
+func TestGenerateLastName(t *testing.T) {
+	seen := make(map[string]bool)
+	for i := 0; i < 100; i++ {
+		n := &Name{}
+		name := n.GenerateLastName()
+		if seen[name] {
+			continue
+		}
+		seen[name] = true
+		if !contains(lastNames, name) {
+			t.Errorf("GenerateLastName returned an unexpected name: %s", name)
+		}
 	}
-
-	lastName := ng.RandomLastName()
-	if lastName != "Mousavi" {
-		t.Errorf("Expected 'Kazemi', got '%s'", lastName)
+	if len(seen) < 10 { // Check for some variability
+		t.Errorf("GenerateLastName returned too few unique names, got: %d", len(seen))
 	}
+}
 
-	fullName := ng.RandomFullName()
-	if fullName != "Reza Mousavi" {
-		t.Errorf("Expected 'Reza Kazemi', got '%s'", fullName)
+func TestGenerateFullName(t *testing.T) {
+	n := &Name{}
+	name := n.GenerateFullName()
+	parts := strings.Split(name, " ")
+	if len(parts) != 2 {
+		t.Errorf("GenerateFullName did not return a proper full name, got: %s", name)
+	}
+	if !contains(firstNames, parts[0]) || !contains(lastNames, parts[1]) {
+		t.Errorf("GenerateFullName returned an unexpected full name: %s", name)
 	}
 }

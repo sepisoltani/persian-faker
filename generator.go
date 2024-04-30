@@ -5,6 +5,7 @@ import (
 	"github.com/sepisoltani/persian-faker/providers/bill"
 	"github.com/sepisoltani/persian-faker/providers/digit"
 	"github.com/sepisoltani/persian-faker/providers/location"
+	"github.com/sepisoltani/persian-faker/providers/name"
 	"github.com/sepisoltani/persian-faker/providers/phonenumber"
 )
 
@@ -15,6 +16,7 @@ type DataGenerator struct {
 	Digit       *digit.Digit
 	PhoneNumber *phonenumber.PhoneNumber
 	Location    *location.Location
+	Name        *name.Name
 }
 
 func NewDataGenerator() *DataGenerator {
@@ -24,5 +26,6 @@ func NewDataGenerator() *DataGenerator {
 		Digit:       &digit.Digit{},
 		PhoneNumber: &phonenumber.PhoneNumber{},
 		Location:    &location.Location{},
+		Name:        &name.Name{},
 	}
 }

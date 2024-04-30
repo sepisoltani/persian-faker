@@ -1,65 +1,131 @@
-package names
+package name
 
 import (
-	"encoding/json"
 	"math/rand"
-	"os"
-	"path/filepath"
+	"time"
 )
 
-// NameData represents the structure for names data.
-type NameData struct {
-	FirstNames []string `json:"firstNames"`
-	LastNames  []string `json:"lastNames"`
+var firstNames = []string{
+	"علی",
+	"مریم",
+	"حسن",
+	"زهرا",
+	"رضا",
+	"فاطمه",
+	"محمد",
+	"سارا",
+	"جواد",
+	"لیلا",
+	"امیر",
+	"نازنین",
+	"مجید",
+	"سمانه",
+	"کیان",
+	"نگین",
+	"شهاب",
+	"پریسا",
+	"مهدی",
+	"الهام",
+	"عرفان",
+	"تینا",
+	"بهنام",
+	"زینب",
+	"پویا",
+	"سپیده",
+	"کامران",
+	"ملیکا",
+	"یاسر",
+	"مینا",
+	"بهزاد",
+	"آناهیتا",
+	"فرشاد",
+	"مهسا",
+	"رامین",
+	"سحر",
+	"عباس",
+	"فریبا",
+	"هومن",
+	"آزاده",
+	"بهروز",
+	"سمیرا",
+	"سعید",
+	"شیرین",
+	"آرش",
+	"کتایون",
+	"فرید",
+	"هدیه",
+	"مانی",
+	"رویا",
 }
 
-// DataLoader is the interface for loading name data.
-type DataLoader interface {
-	LoadData(path string) (NameData, error)
+var lastNames = []string{
+	"محمدی",
+	"هاشمی",
+	"سلطانی",
+	"احمدی",
+	"رضایی",
+	"کریمی",
+	"جعفری",
+	"حسینی",
+	"نجفی",
+	"شیرازی",
+	"فرزانه",
+	"علوی",
+	"رستمی",
+	"موسوی",
+	"کاشانی",
+	"تهرانی",
+	"صادقی",
+	"قاسمی",
+	"میرزایی",
+	"نوری",
+	"رحیمی",
+	"کوهی",
+	"شاهین",
+	"زارع",
+	"بهاری",
+	"عبدی",
+	"چراغی",
+	"امینی",
+	"پهلوان",
+	"تاج",
+	"داودی",
+	"صفری",
+	"باقری",
+	"زمانی",
+	"کوچکی",
+	"آقایی",
+	"مهدوی",
+	"جمشیدی",
+	"گلزار",
+	"پارسا",
+	"صمدی",
+	"شفیعی",
+	"مرادی",
+	"بابایی",
+	"حیدری",
+	"خانی",
+	"یزدانی",
+	"سلطانپور",
+	"فخری",
+	"ملکی",
+}
+var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
+
+type Name struct {
 }
 
-// FileDataLoader loads name data from a file.
-type FileDataLoader struct{}
-
-func (fdl FileDataLoader) LoadData(path string) (NameData, error) {
-	var data NameData
-	file, err := os.ReadFile(path)
-	if err != nil {
-		return data, err
-	}
-	err = json.Unmarshal(file, &data)
-	return data, err
+// GenerateFirstName returns a random Persian first name.
+func (Name) GenerateFirstName() string {
+	return firstNames[rng.Intn(len(firstNames))]
 }
 
-// NameGenerator holds the loaded name data and the random generator.
-type NameGenerator struct {
-	Data NameData
-	Rand *rand.Rand
+// GenerateLastName returns a random Persian last name.
+func (Name) GenerateLastName() string {
+	return lastNames[rng.Intn(len(lastNames))]
 }
 
-// NewNameGenerator creates a new NameGenerator with data loaded using the given DataLoader and random source.
-func NewNameGenerator(loader DataLoader, seed int64) (*NameGenerator, error) {
-	dataPath := filepath.Join("data", "names.json")
-	data, err := loader.LoadData(dataPath)
-	if err != nil {
-		return nil, err
-	}
-	src := rand.NewSource(seed)
-	rng := rand.New(src)
-	return &NameGenerator{Data: data, Rand: rng}, nil
-}
-
-// RandomFirstName returns a random Persian first name.
-func (ng *NameGenerator) RandomFirstName() string {
-	return ng.Data.FirstNames[ng.Rand.Intn(len(ng.Data.FirstNames))]
-}
-
-// RandomLastName returns a random Persian last name.
-func (ng *NameGenerator) RandomLastName() string {
-	return ng.Data.LastNames[ng.Rand.Intn(len(ng.Data.LastNames))]
-}
-
-// RandomFullName returns a random Persian full name.
-func (ng *NameGenerator) RandomFullName() string {
-	return ng.RandomFirstName() + " " + ng.RandomLastName()
+// GenerateFullName returns a random Persian full name.
+func (name Name) GenerateFullName() string {
+	return name.GenerateFirstName() + " " + name.GenerateLastName()
 }
