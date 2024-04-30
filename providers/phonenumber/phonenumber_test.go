@@ -4,12 +4,13 @@ import (
 	"testing"
 )
 
-// TestRandomPersianMobileNumber checks if the generated mobile phonenumber is correctly formatted.
-func TestRandomPersianMobileNumber(t *testing.T) {
-	generatedNumber := RandomPersianMobileNumber()
+// TestGeneratePersianMobileNumber checks if the generated mobile phone number is correctly formatted.
+func TestGeneratePersianMobileNumber(t *testing.T) {
+	phoneNumber := &phoneNumber{}
+	generatedNumber := phoneNumber.GeneratePersianMobileNumber()
 
 	if len(generatedNumber) != 11 {
-		t.Errorf("Expected mobile phonenumber length of 11, but got %d", len(generatedNumber))
+		t.Errorf("Expected mobile phone number length of 11, but got %d", len(generatedNumber))
 	}
 
 	validPrefixes := []string{"0912", "0913", "0914", "0915", "0916"}
@@ -24,12 +25,12 @@ func TestRandomPersianMobileNumber(t *testing.T) {
 	}
 
 	if !found {
-		t.Errorf("Generated mobile phonenumber has an invalid prefix: %s", prefix)
+		t.Errorf("Generated mobile phone number has an invalid prefix: %s", prefix)
 	}
 
 	for _, c := range generatedNumber[4:] {
 		if c < '0' || c > '9' {
-			t.Errorf("Generated mobile phonenumber contains non-digit characters: %s", generatedNumber)
+			t.Errorf("Generated mobile phone number contains non-digit characters: %s", generatedNumber)
 			break
 		}
 	}

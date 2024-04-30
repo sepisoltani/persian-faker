@@ -6,12 +6,14 @@ import (
 	"time"
 )
 
-// RandomPersianMobileNumber generates a Persian mobile phonenumber.
-func RandomPersianMobileNumber() string {
-	prefixes := []string{"0912", "0913", "0914", "0915", "0916"}
+var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
 
-	src := rand.NewSource(time.Now().UnixNano())
-	rng := rand.New(src)
+type phoneNumber struct {
+}
+
+// GeneratePersianMobileNumber generates a Persian mobile phone number.
+func (phoneNumber) GeneratePersianMobileNumber() string {
+	prefixes := []string{"0912", "0913", "0914", "0915", "0916"}
 
 	prefix := prefixes[rng.Intn(len(prefixes))]
 
