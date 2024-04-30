@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-// Sample data for the different parts of the address
+// Sample data for the different parts of the address.
 var (
 	buildingNumbers = func() []string {
 		numbers := make([]string, 3)
@@ -33,8 +33,8 @@ func randomElement(items []string) string {
 	return items[rand.Intn(len(items))]
 }
 
-// RandomPersianAddress generates a random Persian address
-func RandomPersianAddress() string {
+// GeneratePersianAddress generates a random Persian address.
+func (Location) GeneratePersianAddress() string {
 	// Construct the address from the parts
 	return fmt.Sprintf("%s %s %s %s %s %s %s",
 		cityPrefix,

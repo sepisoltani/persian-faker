@@ -6,9 +6,10 @@ import (
 	"testing"
 )
 
-// TestRandomPersianAddress verifies that the format of the generated address is correct.
-func TestRandomPersianAddress(t *testing.T) {
-	address := RandomPersianAddress()
+// TestGeneratePersianAddress verifies that the format of the generated address is correct.
+func TestGeneratePersianAddress(t *testing.T) {
+	location := &Location{}
+	address := location.GeneratePersianAddress()
 	// Split the address into components based on spaces
 	parts := strings.Fields(address)
 

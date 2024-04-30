@@ -6,7 +6,7 @@ import (
 
 // TestGeneratePersianMobileNumber checks if the generated mobile phone number is correctly formatted.
 func TestGeneratePersianMobileNumber(t *testing.T) {
-	phoneNumber := &phoneNumber{}
+	phoneNumber := &PhoneNumber{}
 	generatedNumber := phoneNumber.GeneratePersianMobileNumber()
 
 	if len(generatedNumber) != 11 {
