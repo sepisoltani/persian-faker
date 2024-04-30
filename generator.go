@@ -1,4 +1,4 @@
-package persian_faker
+package persianfaker
 
 import (
 	"github.com/sepisoltani/persian-faker/providers/bank"
