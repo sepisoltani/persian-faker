@@ -23,6 +23,9 @@ issues:
     - linters:
         - gosec
       text: "G404:" # Ignore weak random number generator lint. We do not need strong randomness here.
+    - linters:
+        - stylecheck
+      text: "ST1018:" # Ignore Unicode format character warnings
 
   exclude:
     - "should have comment or be unexported"
