@@ -10,8 +10,8 @@ var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 type Bank struct{}
 
-// GenerateBankIBAN generates a random Persian bank IBAN number.
-func (Bank) GenerateBankIBAN() string {
+// IBAN generates a random Persian bank IBAN number.
+func (Bank) IBAN() string {
 	sheba := "IR"
 	for i := 0; i < 24; i++ {
 		digit := rng.Intn(10)
@@ -20,8 +20,8 @@ func (Bank) GenerateBankIBAN() string {
 	return sheba
 }
 
-// GenerateBankCardNumber generates a bank card number.
-func (Bank) GenerateBankCardNumber() string {
+// CardNumber generates a bank card number.
+func (Bank) CardNumber() string {
 	cardNumber := "6037"
 	for i := 0; i < 12; i++ {
 		digit := rng.Intn(10)
@@ -30,8 +30,8 @@ func (Bank) GenerateBankCardNumber() string {
 	return cardNumber
 }
 
-// GenerateBankName returns a random Persian bank name from a predefined list.
-func (Bank) GenerateBankName() string {
+// BankName returns a random Persian bank name from a predefined list.
+func (Bank) BankName() string {
 	bankNames := []string{
 		"بانک ملی ایران", "بانک سپه", "بانک تجارت", "بانک ملت",
 		"بانک صادرات ایران", "بانک کشاورزی", "بانک مسکن", "بانک صنعت و معدن",

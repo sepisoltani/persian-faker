@@ -33,8 +33,8 @@ func randomElement(items []string) string {
 	return items[rand.Intn(len(items))]
 }
 
-// GeneratePersianAddress generates a random Persian address.
-func (Location) GeneratePersianAddress() string {
+// Address generates a random Persian address.
+func (Location) Address() string {
 	// Construct the address from the parts
 	return fmt.Sprintf("%s %s %s %s %s %s %s",
 		cityPrefix,

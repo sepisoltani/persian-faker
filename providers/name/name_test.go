@@ -9,17 +9,17 @@ func TestGenerateFirstName(t *testing.T) {
 	seen := make(map[string]bool)
 	for i := 0; i < 100; i++ {
 		n := &Name{}
-		name := n.GenerateFirstName()
+		name := n.FirstName()
 		if seen[name] {
 			continue
 		}
 		seen[name] = true
 		if !contains(firstNames, name) {
-			t.Errorf("GenerateFirstName returned an unexpected name: %s", name)
+			t.Errorf("FirstName returned an unexpected name: %s", name)
 		}
 	}
-	if len(seen) < 10 { // Check for some variability
-		t.Errorf("GenerateFirstName returned too few unique names, got: %d", len(seen))
+	if len(seen) < 10 {
+		t.Errorf("FirstName returned too few unique names, got: %d", len(seen))
 	}
 }
 
@@ -33,32 +33,32 @@ func contains(slice []string, item string) bool {
 	return false
 }
 
-func TestGenerateLastName(t *testing.T) {
+func TestLastName(t *testing.T) {
 	seen := make(map[string]bool)
 	for i := 0; i < 100; i++ {
 		n := &Name{}
-		name := n.GenerateLastName()
-		if seen[name] {
+		lastName := n.LastName()
+		if seen[lastName] {
 			continue
 		}
-		seen[name] = true
-		if !contains(lastNames, name) {
-			t.Errorf("GenerateLastName returned an unexpected name: %s", name)
+		seen[lastName] = true
+		if !contains(lastNames, lastName) {
+			t.Errorf("LastName returned an unexpected name: %s", lastName)
 		}
 	}
-	if len(seen) < 10 { // Check for some variability
-		t.Errorf("GenerateLastName returned too few unique names, got: %d", len(seen))
+	if len(seen) < 10 {
+		t.Errorf("LastName returned too few unique names, got: %d", len(seen))
 	}
 }
 
-func TestGenerateFullName(t *testing.T) {
+func TestFullName(t *testing.T) {
 	n := &Name{}
-	name := n.GenerateFullName()
-	parts := strings.Split(name, " ")
+	fullName := n.FullName()
+	parts := strings.Split(fullName, " ")
 	if len(parts) != 2 {
-		t.Errorf("GenerateFullName did not return a proper full name, got: %s", name)
+		t.Errorf("FullName did not return a proper full name, got: %s", fullName)
 	}
 	if !contains(firstNames, parts[0]) || !contains(lastNames, parts[1]) {
-		t.Errorf("GenerateFullName returned an unexpected full name: %s", name)
+		t.Errorf("FullName returned an unexpected full name: %s", fullName)
 	}
 }

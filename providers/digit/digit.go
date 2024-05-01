@@ -13,7 +13,7 @@ var faNums = []string{"۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"
 type Digit struct {
 }
 
-// GeneratePersianDigit returns a random Persian digit.
-func (Digit) GeneratePersianDigit() string {
+// Digit returns a random Persian digit.
+func (Digit) Digit() string {
 	return faNums[rng.Intn(len(faNums))]
 }

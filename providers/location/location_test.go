@@ -4,10 +4,10 @@ import (
 	"testing"
 )
 
-// TestGenerateProvince checks if the randomly selected province is from the list.
-func TestGenerateProvince(t *testing.T) {
+// TestProvince checks if the randomly selected province is from the list.
+func TestProvince(t *testing.T) {
 	location := &Location{}
-	randomProvince := location.GenerateProvince()
+	randomProvince := location.Province()
 	found := false
 	for _, province := range provinces {
 		if province == randomProvince {
@@ -16,14 +16,14 @@ func TestGenerateProvince(t *testing.T) {
 		}
 	}
 	if !found {
-		t.Errorf("GenerateProvince returned a value not in the provinces list: %s", randomProvince)
+		t.Errorf("Province returned a value not in the provinces list: %s", randomProvince)
 	}
 }
 
-// TestGenerateCity checks if the randomly selected city is from the list.
-func TestGenerateCity(t *testing.T) {
+// TestCity checks if the randomly selected city is from the list.
+func TestCity(t *testing.T) {
 	location := &Location{}
-	randomCity := location.GenerateCity()
+	randomCity := location.City()
 	found := false
 	for _, city := range cities {
 		if city == randomCity {
@@ -32,14 +32,14 @@ func TestGenerateCity(t *testing.T) {
 		}
 	}
 	if !found {
-		t.Errorf("GenerateCity returned a value not in the cities list: %s", randomCity)
+		t.Errorf("City returned a value not in the cities list: %s", randomCity)
 	}
 }
 
-// TestGenerateCountry checks if the randomly selected city is from the list.
-func TestGenerateCountry(t *testing.T) {
+// TestCountry checks if the randomly selected country is from the list.
+func TestCountry(t *testing.T) {
 	location := &Location{}
-	randomCountry := location.GenerateCountry()
+	randomCountry := location.Country()
 	found := false
 	for _, country := range countries {
 		if country == randomCountry {
@@ -48,6 +48,6 @@ func TestGenerateCountry(t *testing.T) {
 		}
 	}
 	if !found {
-		t.Errorf("GenerateCountry returned a value not in the cities list: %s", randomCountry)
+		t.Errorf("Country returned a value not in the countires list: %s", randomCountry)
 	}
 }

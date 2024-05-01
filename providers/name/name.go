@@ -115,17 +115,17 @@ var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
 type Name struct {
 }
 
-// GenerateFirstName returns a random Persian first name.
-func (Name) GenerateFirstName() string {
+// FirstName returns a random Persian first name.
+func (Name) FirstName() string {
 	return firstNames[rng.Intn(len(firstNames))]
 }
 
-// GenerateLastName returns a random Persian last name.
-func (Name) GenerateLastName() string {
+// LastName returns a random Persian last name.
+func (Name) LastName() string {
 	return lastNames[rng.Intn(len(lastNames))]
 }
 
-// GenerateFullName returns a random Persian full name.
-func (name Name) GenerateFullName() string {
-	return name.GenerateFirstName() + " " + name.GenerateLastName()
+// FullName returns a random Persian full name.
+func (name Name) FullName() string {
+	return name.FirstName() + " " + name.LastName()
 }

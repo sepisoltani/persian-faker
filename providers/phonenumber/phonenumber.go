@@ -11,8 +11,8 @@ var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
 type PhoneNumber struct {
 }
 
-// GeneratePersianMobileNumber generates a Persian mobile phone number.
-func (PhoneNumber) GeneratePersianMobileNumber() string {
+// PhoneNumber generates a Persian mobile phone number.
+func (PhoneNumber) PhoneNumber() string {
 	prefixes := []string{"0912", "0913", "0914", "0915", "0916"}
 
 	prefix := prefixes[rng.Intn(len(prefixes))]

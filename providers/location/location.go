@@ -228,17 +228,17 @@ var countries = []string{
 type Location struct {
 }
 
-// GenerateProvince returns a random province.
-func (Location) GenerateProvince() string {
+// Province returns a random province.
+func (Location) Province() string {
 	return provinces[rng.Intn(len(provinces))]
 }
 
-// GenerateCity returns a random city.
-func (Location) GenerateCity() string {
+// City returns a random city.
+func (Location) City() string {
 	return cities[rng.Intn(len(cities))]
 }
 
-// GenerateCountry returns a random country.
-func (Location) GenerateCountry() string {
+// Country returns a random country.
+func (Location) Country() string {
 	return countries[rng.Intn(len(cities))]
 }

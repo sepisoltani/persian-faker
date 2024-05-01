@@ -24,8 +24,8 @@ var billTypes = map[int]string{
 	11: "تلویزیون",
 }
 
-// GenerateBillType returns a random bill type from the map.
-func (Bill) GenerateBillType() string {
+// BillType returns a random bill type from the map.
+func (Bill) BillType() string {
 
 	keys := make([]int, 0, len(billTypes))
 	for k := range billTypes {

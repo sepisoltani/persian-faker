@@ -6,10 +6,10 @@ import (
 	"testing"
 )
 
-// TestGeneratePersianAddress verifies that the format of the generated address is correct.
-func TestGeneratePersianAddress(t *testing.T) {
+// TestAddress verifies that the format of the generated address is correct.
+func TestAddress(t *testing.T) {
 	location := &Location{}
-	address := location.GeneratePersianAddress()
+	address := location.Address()
 	// Split the address into components based on spaces
 	parts := strings.Fields(address)
 

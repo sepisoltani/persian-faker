@@ -5,26 +5,26 @@ import (
 	"testing"
 )
 
-// TestGenerateBankIBAN ensures that the IBAN generated is in the correct format.
-func TestGenerateBankIBAN(t *testing.T) {
+// TestIBAN ensures that the IBAN generated is in the correct format.
+func TestIBAN(t *testing.T) {
 	bank := &Bank{}
-	sheba := bank.GenerateBankIBAN()
+	iban := bank.IBAN()
 	expectedPattern := `^IR[0-9]{24}$`
 
 	re := regexp.MustCompile(expectedPattern)
-	if !re.MatchString(sheba) {
-		t.Errorf("Generated IBAN is invalid. Got: %s, Expected pattern: %s", sheba, expectedPattern)
+	if !re.MatchString(iban) {
+		t.Errorf("Generated IBAN is invalid. Got: %s, Expected pattern: %s", iban, expectedPattern)
 	}
 
-	if len(sheba) != 26 {
-		t.Errorf("Generated IBAN length is incorrect. Expected 26, got: %d", len(sheba))
+	if len(iban) != 26 {
+		t.Errorf("Generated IBAN length is incorrect. Expected 26, got: %d", len(iban))
 	}
 }
 
-// TestGenerateBankCardNumber ensures that the bank card number generated is in the correct format.
-func TestGenerateBankCardNumber(t *testing.T) {
+// TestCardNumber ensures that the bank card number generated is in the correct format.
+func TestCardNumber(t *testing.T) {
 	bank := &Bank{}
-	cardNumber := bank.GenerateBankCardNumber()
+	cardNumber := bank.CardNumber()
 	expectedPattern := `^6037[0-9]{12}$`
 
 	re := regexp.MustCompile(expectedPattern)
@@ -37,10 +37,10 @@ func TestGenerateBankCardNumber(t *testing.T) {
 	}
 }
 
-// TestGenerateBankName checks if the returned bank name is from the list of defined bank names.
-func TestGenerateBankName(t *testing.T) {
+// TestBankName checks if the returned bank name is from the list of defined bank names.
+func TestBankName(t *testing.T) {
 	bank := &Bank{}
-	bankName := bank.GenerateBankName() // Use the GenerateBankName method
+	bankName := bank.BankName() // Use the GenerateBankName method
 	validBankNames := map[string]bool{
 		"بانک ملی ایران":            true,
 		"بانک سپه":                  true,

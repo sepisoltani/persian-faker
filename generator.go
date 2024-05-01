@@ -19,7 +19,7 @@ type DataGenerator struct {
 	Name        *name.Name
 }
 
-func NewDataGenerator() *DataGenerator {
+func New() *DataGenerator {
 	return &DataGenerator{
 		Bank:        &bank.Bank{},
 		Bill:        &bill.Bill{},
