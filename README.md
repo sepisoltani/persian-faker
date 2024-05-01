@@ -28,7 +28,7 @@ import persianfaker "github.com/sepisoltani/persian-faker"
 ### Creating a Data Generator
 
 ```go
-var generator = persianfaker.New()
+var faker = persianfaker.New()
 ```
 
 ### Name Provider
@@ -36,19 +36,28 @@ var generator = persianfaker.New()
 * Generate a random Persian first name:
 
 ```go
-var firstName = generator.Name.FirstName()
+var firstName = faker.Name.FirstName()
 ```
 
 * Generate a random Persian last name:
 
 ```go
-var lastName = generator.Name.LastName()
+var lastName = faker.Name.LastName()
 ```
 
 * Generate a random Persian full name:
 
 ```go
-var fullName = generator.Name.FullName()
+var fullName = faker.Name.FullName()
+```
+
+
+### Text Provider
+
+* Generate a random Persian sentence:
+
+```go
+var sentence = faker.Text.Sentence()
 ```
 
 ### Phone Number Provider
@@ -56,7 +65,7 @@ var fullName = generator.Name.FullName()
 * Generate a random Persian mobile number:
 
 ```go
-var phoneNumber = generator.PhoneNumber.PhoneNumber()
+var phoneNumber = faker.PhoneNumber.PhoneNumber()
 ```
 
 ### Location Provider
@@ -64,25 +73,25 @@ var phoneNumber = generator.PhoneNumber.PhoneNumber()
 * Generate a random province:
 
 ```go
-var province = generator.Location.Province()
+var province = faker.Location.Province()
 ```
 
 * Generate a random city:
 
 ```go
-var city = generator.Location.City()
+var city = faker.Location.City()
 ```
 
 * Generate a random country:
 
 ```go
-var country = generator.Location.Country()
+var country = faker.Location.Country()
 ```
 
 * Generate a random address:
 
 ```go
-var address = generator.Location.Address()
+var address = faker.Location.Address()
 ```
 
 ### Bank Provider
@@ -90,19 +99,19 @@ var address = generator.Location.Address()
 * Generate a random Persian bank name:
 
 ```go
-var bankName = generator.Bank.BankName()
+var bankName = faker.Bank.BankName()
 ```
 
 * Generate a random Persian bank IBAN:
 
 ```go
-var iban = generator.Bank.IBAN()
+var iban = faker.Bank.IBAN()
 ```
 
 * Generate a random bank card number:
 
 ```go
-var cardNumber = generator.Bank.CardNumber()
+var cardNumber = faker.Bank.CardNumber()
 ```
 
 ### Digit Provider
@@ -110,7 +119,7 @@ var cardNumber = generator.Bank.CardNumber()
 * Generate a Persian digit:
 
 ```go
-var digit = generator.Digit.Digit()
+var digit = faker.Digit.Digit()
 ```
 
 ### Bill Provider
@@ -118,7 +127,7 @@ var digit = generator.Digit.Digit()
 * Generate a random bill type:
 
 ```go
-var billType = generator.Bill.BillType()
+var billType = faker.Bill.BillType()
 ```
 
 ## Contributing
