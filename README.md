@@ -130,6 +130,14 @@ var digit = faker.Digit.Digit()
 var billType = faker.Bill.BillType()
 ```
 
+### Vehicle Provider
+
+* Generate a random car plate number:
+
+```go
+var carPlateNumber = faker.Vehicle.CarPlateNumber()
+```
+
 ## Contributing
 
 We welcome contributions to improve the package. If you have suggestions or improvements, please fork the repository and

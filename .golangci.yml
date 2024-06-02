@@ -9,9 +9,6 @@ linters:
     - unused
     - gosec
     - stylecheck
-    - structcheck
-    - varcheck
-    - deadcode
     - typecheck
     - gocritic
     - gofmt
